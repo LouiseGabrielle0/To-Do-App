@@ -1,8 +1,8 @@
 import { Heading } from '@chakra-ui/react';
 import ToDoList from './components/ToDoList';
 import AddToDo from './components/AddToDo';
-import { VStack, IconButton } from '@chakra-ui/react';
-import { FaSun } from 'react-icons/fa';
+import { VStack, IconButton, useColorMode } from '@chakra-ui/react';
+import { FaSun, FaMoon } from 'react-icons/fa';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -29,13 +29,16 @@ localStorage.setItem('todos', JSON.stringify(toDos)) //converting the JS Object 
     setToDos([...toDos,todo])
   }
 
+  const {colorMode, toggleColorMode} = useColorMode()
+
   return (
     <VStack p={4}>
       <IconButton
-        icon={<FaSun />}
+        icon={colorMode === "light" ? <FaSun/> : <FaMoon/>}
         isRound="true"
         size="lg"
         alignSelf="flex-end"
+        onClick={toggleColorMode}
       />
       <Heading
         mb="8"
