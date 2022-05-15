@@ -1,41 +1,20 @@
-import React from 'react';
-import {
-  ChakraProvider,
-  Box,
-  Text,
-  Link,
-  VStack,
-  Code,
-  Grid,
-  theme,
-} from '@chakra-ui/react';
-import { ColorModeSwitcher } from './ColorModeSwitcher';
-import { Logo } from './Logo';
+import {Heading} from '@chakra-ui/react';
+import ToDoList from './components/ToDoList';
+import AddToDo  from './components/AddToDo';
+import { VStack, IconButton } from '@chakra-ui/react';
+import {FaSun} from 'react-icons/fa'
+
+
+
 
 function App() {
   return (
-    <ChakraProvider theme={theme}>
-      <Box textAlign="center" fontSize="xl">
-        <Grid minH="100vh" p={3}>
-          <ColorModeSwitcher justifySelf="flex-end" />
-          <VStack spacing={8}>
-            <Logo h="40vmin" pointerEvents="none" />
-            <Text>
-              Edit <Code fontSize="xl">src/App.js</Code> and save to reload.
-            </Text>
-            <Link
-              color="teal.500"
-              href="https://chakra-ui.com"
-              fontSize="2xl"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn Chakra
-            </Link>
-          </VStack>
-        </Grid>
-      </Box>
-    </ChakraProvider>
+    <VStack p={4}>
+    <IconButton icon={<FaSun/>} isRounded='true' size='lg' alignSelf='flex-end'/>
+      <Heading mb='8' fontWeight='bold' fontSize='x-large' bgGradient='linear(to-r, pink.500, pink.300, blue.500)' bgClip='text'>To Do List</Heading>
+      <ToDoList/>
+      <AddToDo/>
+    </VStack>
   );
 }
 
